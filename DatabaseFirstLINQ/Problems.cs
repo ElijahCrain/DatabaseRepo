@@ -29,13 +29,13 @@ namespace DatabaseFirstLINQ
             ProblemTwelve();
             ProblemThirteen();
             ProblemFourteen();
-            //ProblemFifteen();
-            //ProblemSixteen();
-            //ProblemSeventeen();
-            //ProblemEighteen();
-            //ProblemNineteen();
-            //ProblemTwenty();
-        }
+			ProblemFifteen();
+			ProblemSixteen();
+			ProblemSeventeen();
+			ProblemEighteen();
+			ProblemNineteen();
+			ProblemTwenty();
+		}
 
         // <><><><><><><><> R Actions (Read) <><><><><><><><><> shopping cart has users and product _context.shopingCart users/product
         private void ProblemOne()
