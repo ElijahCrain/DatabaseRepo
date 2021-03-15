@@ -207,11 +207,15 @@ namespace DatabaseFirstLINQ
         private void ProblemFourteen()
         {
             // Add the product you create to the user we created in the ShoppingCart junction table using LINQ.
-            var user = _context.ShoppingCarts.Include(u => u.User.Email == "david@gmail.com");
-            var addProduct = _context.ShoppingCarts.Include(p => p.Product.Name == "Remote Controlled Car").Where(u => user.Any(e => e.UserId == e.UserId)).ToList();
-            _context.Add(addProduct);
+            var productId = _context.Products.Where(r => r.Name == "Remote Controlled Car").Select(r => r.Id).SingleOrDefault();
+            var userId = _context.Users.Where(u => u.Email == "david@gmail.com").Select(u => u.Id).SingleOrDefault();
+            ShoppingCart shoppingCart = new ShoppingCart()
+            {
+                ProductId = productId,
+                UserId = userId
+            };
+            _context.ShoppingCarts.Add(shoppingCart);
             _context.SaveChanges();
-
         }
 
         // <><> U Actions (Update) <><>
@@ -228,6 +232,10 @@ namespace DatabaseFirstLINQ
         private void ProblemSixteen()
         {
             // Update the price of the product you created to something different using LINQ.
+            var priceOfProduct = _context.Products.Where(p => p.Name == "Remote Controlled Car").SingleOrDefault();
+            priceOfProduct.Price = 989;
+            _context.Products.Update(priceOfProduct);
+            _context.SaveChanges();
 
         }
 
